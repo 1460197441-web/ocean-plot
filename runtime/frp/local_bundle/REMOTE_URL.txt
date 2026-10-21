@@ -1,8 +1,0 @@
-Remote access URL:
-http://114.55.225.26:18787/?token=dd2e15efa3da24d8c55967fd37a0db1b
-
-Tunnel auth token:
-64694d9d84781294f1560f563c6ed116
-
-App access token:
-dd2e15efa3da24d8c55967fd37a0db1b

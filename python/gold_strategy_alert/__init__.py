@@ -1,2 +1,0 @@
-"""ICBC gold assist package."""
-

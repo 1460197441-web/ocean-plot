@@ -1,8 +1,0 @@
-bindPort = 7000
-
-auth.method = "token"
-auth.token = "64694d9d84781294f1560f563c6ed116"
-
-log.to = "./frps.log"
-log.level = "info"
-log.maxDays = 7

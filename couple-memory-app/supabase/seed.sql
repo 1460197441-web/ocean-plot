@@ -1,4 +1,0 @@
--- Optional seed example:
--- 1. create two auth users first
--- 2. replace the UUIDs below with real auth.users ids
--- 3. then insert sample spaces/members/memories for local testing

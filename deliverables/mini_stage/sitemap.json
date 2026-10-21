@@ -1,9 +1,0 @@
-{
-  "desc": "Synaptic Connection sitemap",
-  "rules": [
-    {
-      "action": "allow",
-      "page": "*"
-    }
-  ]
-}

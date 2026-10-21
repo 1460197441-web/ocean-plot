@@ -1,9 +1,0 @@
-.action-inline-no-pad {
-  padding: 0;
-  margin-top: 24rpx;
-}
-
-.action-inline-no-pad .primary-btn,
-.action-inline-no-pad .soft-button {
-  flex: 1;
-}

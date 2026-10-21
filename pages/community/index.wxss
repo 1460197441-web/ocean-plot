@@ -1,9 +1,0 @@
-.post-item {
-  padding: 28rpx;
-}
-
-.post-meta {
-  margin-top: 18rpx;
-  font-size: 24rpx;
-  color: #70879b;
-}

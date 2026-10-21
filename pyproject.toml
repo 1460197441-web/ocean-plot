@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ocean-plot"
+version = "0.1.0"
+description = "Small, explicit plotting tools for rectilinear ocean NetCDF data"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+dependencies = ["numpy>=1.24", "xarray>=2023.1", "matplotlib>=3.7", "scipy>=1.10"]
+
+[project.optional-dependencies]
+maps = ["cartopy>=0.22"]
+dev = ["pytest>=7", "build>=1"]
+netcdf4 = ["netCDF4>=1.6"]
+
+[project.scripts]
+ocean-plot = "ocean_plot.cli:main"
+
+[project.urls]
+Repository = "https://github.com/1460197441-web/ocean-plot"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
