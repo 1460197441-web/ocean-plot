@@ -107,7 +107,10 @@ def series(da, lon, lat, output, csv_output, units):
         writer = csv.writer(stream)
         writer.writerow(["time", "latitude", "longitude", "variable", "units", "value"])
         for t, value in zip(da[time].values, da.values):
-            writer.writerow([np.datetime_as_string(t), float(da[lat]), float(da[lon]), da.name, units, "" if not np.isfinite(value) else float(value)])
+            timestamp = np.datetime_as_string(t)
+            if "." in timestamp:
+                timestamp = timestamp.rstrip("0").rstrip(".")
+            writer.writerow([timestamp, float(da[lat]), float(da[lon]), da.name, units, "" if not np.isfinite(value) else float(value)])
     fig, ax = plt.subplots(figsize=(9, 3.8), layout="constrained")
     ax.plot(da[time], da.values, color="#236b8e", linewidth=1.2)
     ax.set_ylabel(f"{da.name} ({units})")

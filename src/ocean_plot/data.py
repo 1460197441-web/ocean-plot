@@ -14,6 +14,11 @@ ALIASES = {
 }
 
 
+def normalized_unit(value):
+    """Ignore spelling separators, while retaining direction and unit meaning."""
+    return "".join(str(value).casefold().split()).replace("_", "")
+
+
 def identify(ds, role, explicit=None, required=True):
     if explicit:
         if explicit not in ds:
@@ -45,8 +50,9 @@ def geographic(ds, lon=None, lat=None):
             raise ValueError("Latitude outside [-90, 90]")
         if role == "longitude" and np.any((values < -180) | (values > 360)):
             raise ValueError("Longitude outside supported [-180, 360] range")
-        unit = str(coord.attrs.get("units", "")).lower()
-        if unit and unit not in (("degrees_east", "degree_east", "degrees_e", "degree_e") if role == "longitude" else ("degrees_north", "degree_north", "degrees_n", "degree_n")):
+        unit = normalized_unit(coord.attrs.get("units", ""))
+        directional = {"degreeseast", "degreeeast", "degreese", "degreee"} if role == "longitude" else {"degreesnorth", "degreenorth", "degreesn", "degreen"}
+        if unit and unit not in directional | {"degree", "degrees"}:
             raise ValueError(f"{role} units must be geographic degrees, got {unit!r}")
     attrs = ds[lon].attrs.copy()
     ds = ds.assign_coords({lon: ((ds[lon] + 180) % 360) - 180})
@@ -55,6 +61,21 @@ def geographic(ds, lon=None, lat=None):
     for name in (lon, lat):
         if len(np.unique(ds[name])) != ds.sizes[name]:
             raise ValueError(f"Duplicate {name} coordinates (including cyclic longitude endpoints)")
+    # pcolormesh infers edges between adjacent centers. A regional Pacific
+    # slice becomes two pieces after normalization: it must not bridge the
+    # unobserved sector. A uniform global grid, in contrast, remains contiguous.
+    longitude = np.asarray(ds[lon].values, dtype=float)
+    if longitude.size > 1:
+        gaps = np.diff(longitude)
+        seam = 360.0 - (longitude[-1] - longitude[0])
+        typical = np.median(np.append(gaps, seam))
+        largest = gaps.max()
+        if largest > 180.0 or (largest > 3.0 * typical and largest > seam + 1e-8):
+            raise ValueError(
+                "Longitude normalization leaves a dateline/discontinuous grid gap; "
+                "split dateline regions into separate files before plotting. "
+                "Strongly irregular global grids may also need splitting or regridding."
+            )
     return ds, lon, lat
 
 
@@ -111,10 +132,10 @@ def select(da, spatial, time=None, time_index=None, depth=None, depth_index=None
 
 
 def celsius(da):
-    units = str(da.attrs.get("units", "")).strip().lower().replace(" ", "")
-    if units in {"k", "kelvin", "degree_kelvin", "degrees_kelvin"}:
+    units = normalized_unit(da.attrs.get("units", ""))
+    if units in {"k", "kelvin", "kelvins", "degreekelvin", "degreeskelvin"}:
         result = da - 273.15
-    elif units in {"degc", "c", "°c", "celsius", "degree_celsius", "degrees_celsius", "degree_c", "degrees_c"}:
+    elif units in {"degc", "c", "°c", "celsius", "degreecelsius", "degreescelsius", "degreec", "degreesc"}:
         result = da.copy()
     else:
         raise ValueError(f"Unknown temperature units {da.attrs.get('units')!r}; provide valid source metadata")
