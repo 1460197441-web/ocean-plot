@@ -3,6 +3,7 @@
 [![CI](https://github.com/1460197441-web/ocean-plot/actions/workflows/ci.yml/badge.svg)](https://github.com/1460197441-web/ocean-plot/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/ocean-plot)](https://pypi.org/project/ocean-plot/)
 
 [English](README.en.md) · [下载 / Releases](https://github.com/1460197441-web/ocean-plot/releases) · [反馈问题](https://github.com/1460197441-web/ocean-plot/issues)
 
@@ -12,15 +13,16 @@
 
 ![OISST 黄海海温示例：2025-01-01，真实产品切片](examples/gallery/oisst_20250101.png)
 
-仓库：[1460197441-web/ocean-plot](https://github.com/1460197441-web/ocean-plot)。当前版本 0.1.0，尚未发布 PyPI。
+仓库：[1460197441-web/ocean-plot](https://github.com/1460197441-web/ocean-plot)。已发布到 [PyPI](https://pypi.org/project/ocean-plot/)，也可从 GitHub Release 下载。
 
 ## 安装
 
 Python 3.10 或更新版本。建议使用虚拟环境。
 
 ```sh
-# 稳定版：从 GitHub Release 安装（含 NetCDF4 与地图依赖）
-python -m pip install "ocean-plot[netcdf4,maps] @ https://github.com/1460197441-web/ocean-plot/releases/download/v0.1.0/ocean_plot-0.1.0-py3-none-any.whl"
+# 从 PyPI 安装（含 NetCDF4 与地图依赖）
+python -m pip install "ocean-plot[netcdf4,maps]"
+# 只需要基础功能时：python -m pip install ocean-plot
 # 或安装 Git 开发版：
 python -m pip install "git+https://github.com/1460197441-web/ocean-plot.git"
 # 或在下载的仓库根目录：

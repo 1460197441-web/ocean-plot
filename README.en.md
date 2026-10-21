@@ -3,6 +3,7 @@
 [![CI](https://github.com/1460197441-web/ocean-plot/actions/workflows/ci.yml/badge.svg)](https://github.com/1460197441-web/ocean-plot/actions/workflows/ci.yml)
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://github.com/1460197441-web/ocean-plot/blob/main/pyproject.toml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/1460197441-web/ocean-plot/blob/main/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/ocean-plot)](https://pypi.org/project/ocean-plot/)
 
 [中文](https://github.com/1460197441-web/ocean-plot/blob/main/README.md) · [Downloads](https://github.com/1460197441-web/ocean-plot/releases) · [Report a problem](https://github.com/1460197441-web/ocean-plot/issues)
 
@@ -17,11 +18,11 @@ A small Python CLI for students and researchers who need repeatable figures from
 Requires Python 3.10+. Use a virtual environment.
 
 ```sh
-python -m pip install "ocean-plot[netcdf4,maps] @ https://github.com/1460197441-web/ocean-plot/releases/download/v0.1.0/ocean_plot-0.1.0-py3-none-any.whl"
+python -m pip install "ocean-plot[netcdf4,maps]"
 ocean-plot demo --output-dir demo
 ```
 
-The demo requires no network or observational data. Its figures are explicitly marked **SYNTHETIC — not observations**. GitHub Releases are available; **the package is not yet on PyPI**.
+The demo requires no network or observational data. Its figures are explicitly marked **SYNTHETIC — not observations**. The package is available on [PyPI](https://pypi.org/project/ocean-plot/) and [GitHub Releases](https://github.com/1460197441-web/ocean-plot/releases). For the lighter core installation, use `python -m pip install ocean-plot`.
 
 Development install:
 

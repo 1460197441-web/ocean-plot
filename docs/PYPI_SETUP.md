@@ -1,6 +1,6 @@
 # PyPI 首次发布：只需一次账号授权
 
-当前尚未发布 PyPI。GitHub Release 的 wheel 可以直接安装，发布到 PyPI 后才可使用 `pip install ocean-plot`。
+本项目已完成首次 PyPI 发布，用户可直接 `pip install ocean-plot`。以下是首次配置的参考记录，不要重复创建同名 pending publisher。后续发布沿用已配置的 GitHub Trusted Publisher。
 
 ## 需要仓库主人完成
 
@@ -19,7 +19,7 @@
 
 ## 授权完成后
 
-在 [GitHub 发布工作流](https://github.com/1460197441-web/ocean-plot/actions/workflows/publish.yml) 选择 Run workflow：分支 `main`、tag `v0.1.0`、publish 勾选。也可告知代理授权已完成，由代理触发和验收。工作流先检查tag与版本一致，运行测试、构建和twine check，随后用短期OIDC凭据发布，不需要长期token。
+在 [GitHub 发布工作流](https://github.com/1460197441-web/ocean-plot/actions/workflows/publish.yml) 选择 Run workflow：分支 `main`、填写待发布版本的 tag（例如 `v0.1.1`）、publish 勾选。每次必须使用尚未上传到 PyPI 的新版本。工作流先检查tag与版本一致，运行测试、构建和twine check，随后用短期OIDC凭据发布，不需要长期token。
 
 默认不勾 publish 时只做构建验收，不会上传。不要对已经发布的同一版本反复上传；PyPI 不允许覆盖版本文件。
 

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ocean-plot"
-version = "0.1.0"
+version = "0.1.1"
 description = "Small, explicit plotting tools for rectilinear ocean NetCDF data"
 keywords = ["oceanography", "netcdf", "sst", "xarray", "wind", "scientific-visualization", "cli"]
 readme = "README.en.md"

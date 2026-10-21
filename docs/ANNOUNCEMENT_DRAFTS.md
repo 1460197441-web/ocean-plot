@@ -8,7 +8,7 @@
 
 仓库：https://github.com/1460197441-web/ocean-plot
 
-有类似数据可以试试，遇到变量名或单位兼容问题欢迎提 issue。配图用 README 顶部的黄海海温图。当前从 GitHub Release 安装，尚未发布 PyPI。
+有类似数据可以试试，遇到变量名或单位兼容问题欢迎提 issue。配图用 README 顶部的黄海海温图。已发布 PyPI，可用 `pip install ocean-plot` 安装；需要地图和 NetCDF4 时安装 `pip install "ocean-plot[netcdf4,maps]"`。
 
 ## 知乎 / 小红书
 
@@ -32,6 +32,6 @@ The emphasis is explicit selection and predictable handling of missing values. I
 
 Code, examples and GitHub Release downloads: https://github.com/1460197441-web/ocean-plot
 
-I'd appreciate feedback on the CLI and metadata compatibility, especially small reproducible examples that fail. It's an early release, not a replacement for a general analysis library. PyPI publishing is not available yet.
+I'd appreciate feedback on the CLI and metadata compatibility, especially small reproducible examples that fail. It's an early release, not a replacement for a general analysis library. It is available on PyPI: `pip install ocean-plot`, or `pip install "ocean-plot[netcdf4,maps]"` for NetCDF4 and coastline support.
 
-使用本人Pangeo账号在合适的News & Announcements分类发帖；登录或版规不允许时不要换渠道刷屏。项目后续已发布PyPI时，先更新最后一句再发送。
+使用本人Pangeo账号在合适的News & Announcements分类发帖；登录或版规不允许时不要换渠道刷屏。发布前核实安装命令与当前 PyPI 状态。
