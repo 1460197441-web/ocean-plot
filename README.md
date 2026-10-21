@@ -1,6 +1,16 @@
 # ocean-plot
 
+[![CI](https://github.com/1460197441-web/ocean-plot/actions/workflows/ci.yml/badge.svg)](https://github.com/1460197441-web/ocean-plot/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](pyproject.toml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+[English](README.en.md) · [下载 / Releases](https://github.com/1460197441-web/ocean-plot/releases) · [反馈问题](https://github.com/1460197441-web/ocean-plot/issues)
+
+**Ocean NetCDF plotting from the command line: SST maps, wind vectors and point time series, powered by xarray.**
+
 小而明确的海洋 NetCDF 绘图工具：查看文件、海温、风场、单点海温时间序列与离线演示。使用 xarray / NumPy / Matplotlib，不平均额外维度，不填补缺测，不把合成数据当作观测。
+
+![OISST 黄海海温示例：2025-01-01，真实产品切片](examples/gallery/oisst_20250101.png)
 
 仓库：[1460197441-web/ocean-plot](https://github.com/1460197441-web/ocean-plot)。当前版本 0.1.0，尚未发布 PyPI。
 
@@ -9,6 +19,9 @@
 Python 3.10 或更新版本。建议使用虚拟环境。
 
 ```sh
+# 稳定版：从 GitHub Release 安装（含 NetCDF4 与地图依赖）
+python -m pip install "ocean-plot[netcdf4,maps] @ https://github.com/1460197441-web/ocean-plot/releases/download/v0.1.0/ocean_plot-0.1.0-py3-none-any.whl"
+# 或安装 Git 开发版：
 python -m pip install "git+https://github.com/1460197441-web/ocean-plot.git"
 # 或在下载的仓库根目录：
 python -m pip install -e '.[dev,netcdf4]'
@@ -61,8 +74,6 @@ ocean-plot timeseries oisst.nc --point 124 35 --output point.png --csv point.csv
 
 本地验收另使用了已有 OISST 黄海 2025 年切片与 CCMP 2024-01-20 切片。它们是 CLI 兼容性烟测，不代表覆盖所有数据版本。
 
-![OISST 2025-01-01 12:00 source time](examples/gallery/oisst_20250101.png)
-
 ![CCMP 2024-01-20 00:00 source time](examples/gallery/ccmp_20240120.png)
 
 上图分别由 `sst --time-index 0 --bbox 118 126 30 40 --cartopy` 和 `wind --time-index 0 --cartopy` 生成；源产品 OISST / CCMP，时间为源文件坐标值，未假设其时区。只提交图像，不提交真实数据文件。用于时间序列烟测的 OISST 切片有 364 条时间记录；没有补造缺失日期。
@@ -80,3 +91,5 @@ ocean-plot demo --output-dir examples/output
 测试覆盖单位转换、缺测、经纬度重排、维度选择、风分量坐标/单位、空裁剪、失败路径、实际格点 CSV、离线图与 PDF。CI 使用 Python 3.10 / 3.12 / 3.13。可选 Cartopy 分支需要安装及海岸线缓存，基础测试不依赖它。
 
 MIT 许可证只覆盖本项目代码，不改变任何外部数据的许可。
+
+如果工具对你有帮助，欢迎 Star、反馈兼容性问题或贡献示例。报告问题时请说明数据产品、变量/坐标名、单位、命令和完整报错；不要上传私有数据或密钥。见 [贡献说明](CONTRIBUTING.md)。

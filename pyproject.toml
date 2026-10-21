@@ -6,7 +6,8 @@ build-backend = "setuptools.build_meta"
 name = "ocean-plot"
 version = "0.1.0"
 description = "Small, explicit plotting tools for rectilinear ocean NetCDF data"
-readme = "README.md"
+keywords = ["oceanography", "netcdf", "sst", "xarray", "wind", "scientific-visualization", "cli"]
+readme = "README.en.md"
 requires-python = ">=3.10"
 license = "MIT"
 dependencies = ["numpy>=1.24", "xarray>=2023.1", "matplotlib>=3.7", "scipy>=1.10"]
@@ -21,6 +22,9 @@ ocean-plot = "ocean_plot.cli:main"
 
 [project.urls]
 Repository = "https://github.com/1460197441-web/ocean-plot"
+Documentation = "https://github.com/1460197441-web/ocean-plot/blob/main/README.en.md"
+Issues = "https://github.com/1460197441-web/ocean-plot/issues"
+Releases = "https://github.com/1460197441-web/ocean-plot/releases"
 
 [tool.setuptools.packages.find]
 where = ["src"]
